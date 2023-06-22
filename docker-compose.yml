@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  application:
+    image: mikhailtarasevich/event-manager-api
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/event_manager_db
+    ports:
+      - 8888:8888
+    networks:
+      - network
+
+  postgres:
+    image: mikhailtarasevich/db-event-manager-api
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_USER: postgres
+      POSTGRES_DB: event_manager_db
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - 5050:5432
+    restart: always
+    networks:
+      - network
+
+volumes:
+  postgres:
+
+networks:
+  network:
+    driver: bridge

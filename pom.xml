@@ -19,6 +19,7 @@
         <hibernate-validator.version>6.1.6.Final</hibernate-validator.version>
         <java-jwt.version>4.4.0</java-jwt.version>
         <org.jacoco.version>0.8.7</org.jacoco.version>
+        <swagger.version>3.0.0</swagger.version>
     </properties>
 
     <dependencies>
@@ -70,6 +71,16 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -92,6 +103,17 @@
                 <version>${org.jacoco.version}</version>
                 <configuration>
                     <excludes>
+                        <exclude>com/mikhail/tarasevich/eventmanager/RestApiEventManagerApplication.class</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/config/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/dto/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/entity/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/security/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/util/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/service/exception/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/service/mapper/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/service/validator/**</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/service/impl/UserDetailsServiceImpl.class</exclude>
+                        <exclude>com/mikhail/tarasevich/eventmanager/controller/GlobalExceptionHandler.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
